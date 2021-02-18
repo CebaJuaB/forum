@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from django.contrib.auth.models import User
+
 # Create your views here.
 def index(request):
     if not request.user.is_authenticated:
@@ -28,3 +30,9 @@ def logout_view(request):
     return render(request, "users/login.html", {
         "message": "Logged out"
     })
+
+def update_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    user.profile.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
+    user.profile.location = "Popayán"
+    user.save()

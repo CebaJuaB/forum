@@ -4,6 +4,14 @@
 
     <h1>Bienvenido, {{ request.user.first_name }}</h1>
 
+    <h2>{{ user.get_full_name }}</h2>
+    <ul>
+        <li>Username: {{ user.username }}</li>
+        <li>Location: {{ user.profile.location }}</li>
+        <li>Birth Date: {{ user.profile.birth_date }}</li>
+    </ul>
+
+
     <ul>
         <li>Nombre de usuario:  {{ request.user.username }} </li>
         <li>Dirección de correo electrónico: {{ request.user.email }} </li>
