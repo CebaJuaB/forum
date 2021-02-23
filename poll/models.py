@@ -4,6 +4,6 @@ from django.db import models
 class Poll(models.Model):
     question = models.CharField(max_length=127)
     winning_option = models.CharField(max_length=127)
-    winning_coeficient = models.DecimalField()
+    winning_coeficient = models.DecimalField(max_digits=5,decimal_places=5)
     horario_inicio = models.DateTimeField()
     horario_fin = models.DateTimeField()
