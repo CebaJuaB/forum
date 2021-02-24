@@ -1,0 +1,10 @@
+{% extends "poll/layout.html" %}
+
+{% block body %}
+    <h1>Opciones para la votación</h1>
+    <ul>
+        {% for opt in options %}
+            <li>{{ opt.answer }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
