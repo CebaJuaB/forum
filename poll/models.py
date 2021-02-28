@@ -16,6 +16,8 @@ class Poll(models.Model):
     method = models.CharField(max_length=2, choices=Method.choices, default=Method.MAYORIA_CALIFICADA)
     parameter = models.DecimalField(max_digits=5, decimal_places=2,default=0.7)
     criteria = models.CharField(max_length=2, choices=Criteria.choices, default=Criteria.COEFICIENT)
+    max_voters = models.IntegerField(default=0)
+    max_shares = models.IntegerField(default=0)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     def __str__(self):
@@ -24,7 +26,7 @@ class Poll(models.Model):
 class Option(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="poll")
     answer = models.CharField(max_length=127)
-    coeficient = models.DecimalField(max_digits=5, decimal_places=5, default=0)
+    coeficient = models.DecimalField(max_digits=3, decimal_places=3, default=0)
     votes = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)
     def __str__(self):

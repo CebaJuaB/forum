@@ -4,7 +4,11 @@
     <h1>Opciones para la votación</h1>
     <ul>
         {% for opt in options %}
-            <li>{{ opt.answer }} </li>
+            <li>
+                <a href="{% url 'option' opt.id %}"> 
+                    Opción {{ opt.id }} {{ opt.answer }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
