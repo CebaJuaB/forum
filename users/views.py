@@ -21,7 +21,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "users/login.html", {
-                "message": "Invalid credentials"
+                "message": "Las credenciales introducidas, no son válidas"
             })
     return render(request, "users/login.html")
 
@@ -30,8 +30,3 @@ def logout_view(request):
     return render(request, "users/login.html", {
         "message": "Logged out"
     })
-
-def update_profile(request, user_id):
-    user = User.objects.get(pk=user_id)
-    user.profile.document = 76305425
-    user.save()

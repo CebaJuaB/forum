@@ -25,7 +25,7 @@ class Poll(models.Model):
 class Option(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="poll")
     answer = models.CharField(max_length=127)
-    coeficient = models.DecimalField(max_digits=3, decimal_places=3, default=0)
+    coeficient = models.DecimalField(max_digits=3, decimal_places=3, default=0.0)
     votes = models.IntegerField(default=0)
     shares = models.IntegerField(default=0)
     def __str__(self):

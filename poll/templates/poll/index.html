@@ -1,7 +1,7 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1>Votaciones </h1>
+    <h1>Bienvenido {{ request.user.first_name }}, a las votaciones de Forum Digital</h1>
     <ul>
         {% for poll in polls %}
             <li>
@@ -12,7 +12,8 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'logout' %}">Log Out</a>
-
+    <div>
+        <a href="{% url 'logout' %}">Log Out</a>
+    </div>
 {% endblock %}
 
