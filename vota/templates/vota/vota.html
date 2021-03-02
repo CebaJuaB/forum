@@ -1,0 +1,11 @@
+{% extends "vota/layout.html" %}
+
+{% block body %}
+
+    <form action="{% url 'vota' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="selection" placeholder="selection">
+        <input type="submit" name="Vota">
+    </form>
+
+{% endblock %}

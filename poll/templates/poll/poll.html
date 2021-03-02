@@ -1,0 +1,29 @@
+{% extends "poll/layout.html" %}
+
+{% block body %}
+    <h1>{{ poll.question }}</h1>
+    <ul>
+        <li>Método: {{ poll.method }}</li>
+        <li>Parámetro: {{ poll.parameter }}</li>
+        <li>Criterio: {{ poll.criteria }}</li>
+    </ul>
+    <h2>Resultados</h2>
+    <ul>
+        {% for option in options %}
+            <h3>
+                {{ option.answer }}
+            </h3>
+            <ul>
+                <li>Coeficiente alcanzado: {{ option.coeficient }}</li>
+                <li>Votos alcanzados: {{ option.votes }}</li>
+                <li>Acciones votando por esta opción : {{ option.shares }}</li>
+            </ul>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{% url 'index' %}">Listado de votaciones</a>
+    </div>
+    <div>
+        <a href="{% url 'logout' %}">Log Out</a>
+    </div>
+{% endblock %}

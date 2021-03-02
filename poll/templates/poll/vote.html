@@ -1,0 +1,16 @@
+{% extends "poll/layout.html" %}
+
+{% block body %}
+    <h1>{{ vote.option.poll }}</h1>
+    <h1>{{ vote.option }}</h1>
+
+    <h1>Votantes</h1>
+    <ul>
+        {% for voter in voters %}
+            <li>{{ voter }}</li>
+        {% empty %}
+            <li>No hay votantes para esta opción</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
