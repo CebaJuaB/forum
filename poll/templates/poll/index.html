@@ -1,14 +1,18 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1>Opciones para la votación</h1>
+    <h1>Votaciones </h1>
     <ul>
-        {% for opt in options %}
+        {% for poll in polls %}
             <li>
-                <a href="{% url 'option' opt.id %}"> 
-                    Opción {{ opt.id }} {{ opt.answer }}
+                <a href="{% url 'poll' poll.id %}"> 
+                    {{ poll.question }}
                 </a>
             </li>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'logout' %}">Log Out</a>
+
 {% endblock %}
+

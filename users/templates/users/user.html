@@ -6,10 +6,14 @@
 
     <ul>
         <li>Nombre de usuario:  {{ request.user.username }} </li>
+        <li>Apellido: {{ request.user.last_name }}</li>
         <li>Dirección de correo electrónico: {{ request.user.email }} </li>
-        <li>Documento: {{ request.profile.document }}</li>
     </ul>
-
-    <a href="{% url 'logout' %}">Log out</a>
+    <li>
+        <a href="{% url 'index' %}">Listado de votaciones</a>
+    </li>
+    <li>
+        <a href="{% url 'logout' %}">Log Out</a>
+    </li>
 
 {% endblock %}

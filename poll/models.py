@@ -1,17 +1,16 @@
 from django.db import models
 from datetime import date
-from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Poll(models.Model):
     class Method(models.TextChoices):
-        MAYORIA_CALIFICADA = 'MC', _('Mayoría Calificada')
-        MAYORIA_SIMPLE = 'MS', _('Mayoría Simple')
-        VERIFICA_QUORUM = 'QU', _('Verificación del cuórum')
+        MAYORIA_CALIFICADA = 'MC'
+        MAYORIA_SIMPLE = 'MS'
+        VERIFICA_QUORUM = 'VQ'
     class Criteria(models.TextChoices):
-        INDIVIDUAL = 'IN', _('Individual')
-        COEFICIENT = 'CO', _('Coeficiente')
-        SHARES = 'SH', _('Acciones')
+        INDIVIDUAL = 'IN'
+        COEFICIENT = 'CO'
+        SHARES = 'SH'
     question = models.CharField(max_length=127)
     method = models.CharField(max_length=2, choices=Method.choices, default=Method.MAYORIA_CALIFICADA)
     parameter = models.DecimalField(max_digits=5, decimal_places=2,default=0.7)
