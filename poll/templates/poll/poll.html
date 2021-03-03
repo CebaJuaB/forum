@@ -10,18 +10,31 @@
     <h2>Resultados</h2>
     <ul>
         {% for option in options %}
-            <h3>
-                {{ option.answer }}
+            <h3>                
+                    {{ option.answer }}
             </h3>
             <ul>
                 <li>Coeficiente alcanzado: {{ option.coeficient }}</li>
                 <li>Votos alcanzados: {{ option.votes }}</li>
                 <li>Acciones votando por esta opción : {{ option.shares }}</li>
             </ul>
+        {% empty %}
+            <li>No hay opciones</li>
         {% endfor %}
     </ul>
+    <h2>Votos</h2>
+    <ul>
+        {% for vote in votes %}
+            <ul>
+                <li>Usuario: {{ vote.voter }}. Nombre: {{ vote.voter.first_name }} {{ vote.voter.last_name }}. Opción: {{ vote.option.answer }} Horario : {{ vote.vote_time }}</li>
+            </ul>
+        {% empty %}
+            <li>No hay votos</li>
+        {% endfor %}
+    </ul>
+
     <div>
-        <a href="{% url 'index' %}">Listado de votaciones</a>
+        <a href="{% url 'index' %}">Votaciones</a>
     </div>
     <div>
         <a href="{% url 'logout' %}">Log Out</a>

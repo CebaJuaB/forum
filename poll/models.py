@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Poll(models.Model):
@@ -31,15 +32,10 @@ class Option(models.Model):
     def __str__(self):
         return f"{self.answer}"
 
-class Voter(models.Model):
-    first = models.CharField(max_length=64)
-    last = models.CharField(max_length=64)
-    def __str__(self):
-        return f"{self.first} {self.last}" 
-
 class Vote(models.Model):
+    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="questions")
     option = models.ForeignKey(Option, on_delete=models.CASCADE, related_name="choices")
-    voter = models.ForeignKey(Voter, on_delete=models.CASCADE, related_name="voters")
+    voter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="voters")
     vote_time = models.DateTimeField()
     def __str__(self):
-        return f"Opción {self.option} hora {self.vote_time} votó {self.voter}" 
+        return f"Pregunta: {self.poll} Opción: {self.option}. Fecha y hora: {self.vote_time} - Votante: {self.voter} " 

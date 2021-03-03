@@ -9,6 +9,8 @@
                     {{ poll.question }}
                 </a>
             </li>
+        {% empty %}
+            <li>No hay votaciones</li>
         {% endfor %}
     </ul>
 

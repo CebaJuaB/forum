@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Option, Poll, Vote, Voter
+from .models import Option, Poll, Vote
 
 # Register your models here.
 class OptionAdmin(admin.ModelAdmin):
@@ -9,4 +9,4 @@ class OptionAdmin(admin.ModelAdmin):
 admin.site.register(Option, OptionAdmin)
 admin.site.register(Poll)
 admin.site.register(Vote)
-admin.site.register(Voter)
+
