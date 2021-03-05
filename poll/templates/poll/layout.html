@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'poll/styles.css' %}">   
     </head>
     <body>
-            <table>
-                <tr bgcolor="orange">
+            <table class="header">
+                <tr>
                     <td width="20%" >
                         <a href="{% url 'index' %}"> Votaciones </a>
                     </td>
@@ -24,7 +24,7 @@
 
             {% endblock %}
             <!-- Línea de navegación al pie-->
-			<div align='center'>
+			<div class="footer">
 				<small>
 					<a href="{% url 'index' %}"> Votaciones</a> &emsp;
                     <a href="{% url 'login' %}"> Login</a> &emsp; 
@@ -32,7 +32,7 @@
                 </small>
 			</div>
 		    <!-- COPYRIGHT ROW -->
-			<div align='center'>
+			<div class="footer">
 				<small>
                     Copyright @ 2021 Juan Ceballos 
                 </small>
