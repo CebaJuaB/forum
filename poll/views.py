@@ -22,9 +22,3 @@ def poll_view(request, poll_id):
         })
     else:
         return HttpResponseRedirect(reverse("login"))
-
-
-
-
-
-

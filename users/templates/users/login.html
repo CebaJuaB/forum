@@ -1,19 +1,19 @@
-{% extends "users/layout.html" %}
+{% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1>
-        Bienvenido a Forum Digital!
-    </h1>
+    <div>
+        <h1>
+            Bienvenido a Forum Digital!
+        </h1>
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
-    </form>
-
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
 {% endblock %}

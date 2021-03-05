@@ -1,19 +1,12 @@
 {% extends "users/layout.html" %}
 
 {% block body %}
-
-    <h1>Bienvenido, {{ request.user.first_name }}</h1>
-
-    <ul>
-        <li>Nombre de usuario:  {{ request.user.username }} </li>
-        <li>Apellido: {{ request.user.last_name }}</li>
-        <li>Dirección de correo electrónico: {{ request.user.email }} </li>
-    </ul>
-    <li>
-        <a href="{% url 'index' %}">Listado de votaciones</a>
-    </li>
-    <li>
-        <a href="{% url 'logout' %}">Log Out</a>
-    </li>
-
+    <div>
+        <h1>Bienvenido, {{ request.user.first_name }}</h1>
+        <ul>
+            <li>Nombre de usuario:  {{ request.user.username }} </li>
+            <li>Apellido: {{ request.user.last_name }}</li>
+            <li>Dirección de correo electrónico: {{ request.user.email }} </li>
+        </ul>
+    </div>
 {% endblock %}

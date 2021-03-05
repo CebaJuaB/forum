@@ -25,7 +25,7 @@ SECRET_KEY = 'vo3&ukfo&=4!=l%9j#e8)2xb6uf@+)d!m^_&$lnd48=q6&0@^m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost','localhost:8000/poll']
 
 
 # Application definition

@@ -1,10 +1,41 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="es">
     <head>
-        <title>Votaciones Forum</title>
+        <title>Forum Digital</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'poll/styles.css' %}">   
     </head>
     <body>
-        {% block body %}
-        {% endblock %}
+            <table>
+                <tr bgcolor="orange">
+                    <td width="20%" >
+                        <a href="{% url 'index' %}"> Votaciones </a>
+                    </td>
+                    <td  width="20%">
+                        <a href="{% url 'login' %}"> Login </a>
+                    </td>
+                    <td  width="20%">
+                        <a href="{% url 'logout' %}"> Logout</a>
+                    </td>
+                </tr>
+            </table>
+            {% block body %}
+
+            {% endblock %}
+            <!-- Línea de navegación al pie-->
+			<div align='center'>
+				<small>
+					<a href="{% url 'index' %}"> Votaciones</a> &emsp;
+                    <a href="{% url 'login' %}"> Login</a> &emsp; 
+					<a href="{% url 'logout' %}"> Logout</a> &emsp;
+                </small>
+			</div>
+		    <!-- COPYRIGHT ROW -->
+			<div align='center'>
+				<small>
+                    Copyright @ 2021 Juan Ceballos 
+                </small>
+			</div>
     </body>
 </html>

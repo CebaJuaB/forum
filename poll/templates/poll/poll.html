@@ -1,42 +1,51 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1>{{ poll.question }}</h1>
-    <ul>
-        <li>Método: {{ poll.method }}</li>
-        <li>Parámetro: {{ poll.parameter }}</li>
-        <li>Criterio: {{ poll.criteria }}</li>
-    </ul>
-    <h2>Resultados</h2>
-    <ul>
-        {% for option in options %}
-            <h3>                
-                    {{ option.answer }}
-            </h3>
-            <ul>
-                <li>Coeficiente alcanzado: {{ option.coeficient }}</li>
-                <li>Votos alcanzados: {{ option.votes }}</li>
-                <li>Acciones votando por esta opción : {{ option.shares }}</li>
-            </ul>
-        {% empty %}
-            <li>No hay opciones</li>
-        {% endfor %}
-    </ul>
-    <h2>Votos</h2>
-    <ul>
-        {% for vote in votes %}
-            <ul>
-                <li>Usuario: {{ vote.voter }}. Nombre: {{ vote.voter.first_name }} {{ vote.voter.last_name }}. Opción: {{ vote.option.answer }} Horario : {{ vote.vote_time }}</li>
-            </ul>
-        {% empty %}
-            <li>No hay votos</li>
-        {% endfor %}
-    </ul>
 
-    <div>
-        <a href="{% url 'index' %}">Votaciones</a>
-    </div>
-    <div>
-        <a href="{% url 'logout' %}">Log Out</a>
+        <h1>{{ poll.question }}</h1>
+        <ul>
+            <li>Método: {{ poll.method }}</li>
+            <li>Parámetro: {{ poll.parameter }}</li>
+            <li>Criterio: {{ poll.criteria }}</li>
+        </ul>
+        <h2>Resultados</h2>
+        <ul>
+            {% for option in options %}
+                <h3>                
+                    {{ option.answer }}
+                </h3>
+                <ul>
+                    <li>Coeficiente alcanzado: {{ option.coeficient }}</li>
+                    <li>Votos alcanzados: {{ option.votes }}</li>
+                    <li>Acciones votando por esta opción : {{ option.shares }}</li>
+                </ul>
+            {% empty %}
+                <li>No hay opciones</li>
+            {% endfor %}
+        </ul>
+    <h2>Votos</h2>
+    <table>
+        <thead>
+            <th>Opción</th>
+            <th>Hora del voto</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </thead>
+        <tbody>
+            {% for vote in votes %}
+                <tr>
+                    <td>{{ vote.option.answer }}</td>
+                    <td>{{ vote.vote_time }}</td>
+                    <td>{{ vote.voter }}</td> 
+                    <td>{{ vote.voter.first_name }} </td>
+                    <td>{{ vote.voter.last_name }}</td> 
+
+                </tr>
+                {% empty %}
+                <li>No hay votos</li>
+            {% endfor %}
+        </tbody>
+    </table>
     </div>
 {% endblock %}
