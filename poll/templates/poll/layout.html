@@ -4,7 +4,12 @@
     <head>
         <title>Forum Digital</title>
         {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'poll/styles.css' %}">   
+        <link rel="stylesheet" type="text/css" href="{% static 'poll/styles.css' %}"> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'poll/variables.scss' %}"> 
+        <style type="text/css">
+            body { background: white !important; } /* Si se quiere cambiar el fondo de las páginas */
+         </style>
     </head>
     <body>
             <table class="header">
@@ -31,10 +36,13 @@
 					<a href="{% url 'logout' %}"> Logout</a> &emsp;
                 </small>
 			</div>
+            <div class="footer">
+				Forum Digital
+			</div>
 		    <!-- COPYRIGHT ROW -->
 			<div class="footer">
 				<small>
-                    Copyright @ 2021 Juan Ceballos 
+                    Copyright @ 2021 Juan Ceballos
                 </small>
 			</div>
     </body>

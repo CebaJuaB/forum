@@ -1,7 +1,9 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1 class="baz"> Bienvenido {{ request.user.username }} a las votaciones de Forum Digital </h1>
+    <div class="alert alert-primary" role="alert">
+        <h1 class="baz"> Bienvenido {{ request.user.username }} a las votaciones de Forum Digital </h1>
+    </div>
     <ul>
         <li>Nombre:  {{ request.user.first_name }} </li>
         <li>Apellido: {{ request.user.last_name }}</li>

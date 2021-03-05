@@ -1,19 +1,25 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <div>
-        <h1>
-            Bienvenido a Forum Digital!
-        </h1>
+<h1>
+    Bienvenido a Forum Digital!
+</h1>
 
-        {% if message %}
-            {{ message }}
-        {% endif %}
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <input type="submit" value="Login">
-        </form>
+{% if message %}
+    <div class="alert alert-warning" role="alert">
+        {{ message }}
     </div>
+{% endif %}
+<div class="container">
+    <div class="row justify-content-center">
+         <div class="form-group col-md-4 col-md-offset-5 align-center ">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Usuario">
+                <input type="password" name="password" placeholder="Clave">
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
+    </div> 
+</div>
 {% endblock %}
