@@ -1,12 +1,14 @@
-{% extends "users/layout.html" %}
+{% extends "poll/layout.html" %}
 
 {% block body %}
     <div>
-        <h1>Bienvenido, {{ request.user.first_name }}</h1>
+        <h1>Usuario: {{ request.user.first_name }}</h1>
         <ul>
-            <li>Nombre de usuario:  {{ request.user.username }} </li>
+            <li>Nombre:  {{ request.user.first_name }} </li>
             <li>Apellido: {{ request.user.last_name }}</li>
-            <li>Dirección de correo electrónico: {{ request.user.email }} </li>
+            <li>
+                Dirección de correo electrónico: <a href="mailto:{{ request.user.email }}">{{ request.user.email }} </a>
+            </li>
         </ul>
     </div>
 {% endblock %}

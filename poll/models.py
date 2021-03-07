@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Poll(models.Model):
     class Method(models.TextChoices):
-        MAYORIA_CALIFICADA = 'MC'
-        MAYORIA_SIMPLE = 'MS'
-        VERIFICA_QUORUM = 'VQ'
+        MAYORIA_CALIFICADA = 'Mayoria Calificada'
+        MAYORIA_SIMPLE = 'Mayoría Simple'
+        VERIFICA_QUORUM = 'Verificación del Quorum'
     class Criteria(models.TextChoices):
-        INDIVIDUAL = 'IN'
-        COEFICIENT = 'CO'
-        SHARES = 'SH'
+        INDIVIDUAL = 'Individual'
+        COEFICIENT = 'Coeficiente'
+        SHARES = 'Acciones'
     question = models.CharField(max_length=127)
-    method = models.CharField(max_length=2, choices=Method.choices, default=Method.MAYORIA_CALIFICADA)
+    method = models.CharField(max_length=23, choices=Method.choices, default=Method.MAYORIA_CALIFICADA)
     parameter = models.DecimalField(max_digits=5, decimal_places=2,default=0.7)
-    criteria = models.CharField(max_length=2, choices=Criteria.choices, default=Criteria.COEFICIENT)
+    criteria = models.CharField(max_length=11, choices=Criteria.choices, default=Criteria.COEFICIENT)
     max_voters = models.IntegerField(default=0)
     max_shares = models.IntegerField(default=0)
     start_time = models.DateTimeField()
@@ -35,7 +35,7 @@ class Option(models.Model):
 class Vote(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name="questions")
     option = models.ForeignKey(Option, on_delete=models.CASCADE, related_name="choices")
-    voter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="voters")
+    voter = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes")
     vote_time = models.DateTimeField()
     def __str__(self):
         return f"Pregunta: {self.poll} Opción: {self.option}. Fecha y hora: {self.vote_time} - Votante: {self.voter} " 

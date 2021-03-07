@@ -1,28 +1,41 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
+    <h1>
+        Votación por:
+    </h1>
+    <h1 class="baz">
+        {{ poll.question }}
+    </h1>
+    
+    <ul>
+        Método: {{ poll.method }}<br>
+        Parámetro: {{ poll.parameter }}<br>
+        Criterio: {{ poll.criteria }}<br>
+    </ul>
 
-        <h1>{{ poll.question }}</h1>
-        <ul>
-            <li>Método: {{ poll.method }}</li>
-            <li>Parámetro: {{ poll.parameter }}</li>
-            <li>Criterio: {{ poll.criteria }}</li>
-        </ul>
-        <h2>Resultados</h2>
-        <ul>
-            {% for option in options %}
-                <h3>                
-                    {{ option.answer }}
-                </h3>
-                <ul>
-                    <li>Coeficiente alcanzado: {{ option.coeficient }}</li>
-                    <li>Votos alcanzados: {{ option.votes }}</li>
-                    <li>Acciones votando por esta opción : {{ option.shares }}</li>
-                </ul>
+
+    <h2>Opciones</h2>
+    <ul>
+        {% for option in options %}
+            <h3>                
+                {{ option.answer }}
+            </h3>
+            <ul>
+                {% if poll.criteria == "Coeficiente" %}
+                    Coeficiente alcanzado: {{ option.coeficient }}<br>
+                {% endif %}
+                {% if poll.criteria == "Individual" %}
+                    Votos alcanzados: {{ option.votes }}<br>
+                {% endif %}
+                {% if poll.criteria == "Acciones" %}
+                    Acciones votando por esta opción : {{ option.shares }}<br>
+                {% endif %}
+            </ul>
             {% empty %}
-                <li>No hay opciones</li>
-            {% endfor %}
-        </ul>
+                <p>No hay opciones</p>
+        {% endfor %}
+    </ul>
     <h2>Votos</h2>
     <table>
         <thead>
@@ -40,12 +53,10 @@
                     <td>{{ vote.voter }}</td> 
                     <td>{{ vote.voter.first_name }} </td>
                     <td>{{ vote.voter.last_name }}</td> 
-
                 </tr>
                 {% empty %}
                 <li>No hay votos</li>
             {% endfor %}
         </tbody>
     </table>
-    </div>
 {% endblock %}

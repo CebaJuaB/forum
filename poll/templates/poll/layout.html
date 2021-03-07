@@ -14,7 +14,13 @@
             <table class="header">
                 <tr>
                     <td width="20%" >
-                        <a href="{% url 'index' %}"> Votaciones </a>
+                        <a href="{% url 'index' %}">Reporte de votaciones</a>
+                    </td>
+                    <td width="20%" >
+                        <a href="{% url 'votar' %}">Puesto de votaciones</a>
+                    </td>
+                    <td  width="20%">
+                        <a href="{% url 'users' %}"> Usuario </a>
                     </td>
                     <td  width="20%">
                         <a href="{% url 'login' %}"> Login </a>
@@ -30,7 +36,8 @@
             <!-- Línea de navegación al pie-->
 			<div class="footer">
 				<small>
-					<a href="{% url 'index' %}"> Votaciones</a> &emsp;
+					<a href="{% url 'index' %}">Reporte de votaciones</a> &emsp;
+                    <a href="{% url 'users' %}"> Usuario </a> &emsp;
                     <a href="{% url 'login' %}"> Login</a> &emsp; 
 					<a href="{% url 'logout' %}"> Logout</a> &emsp;
                 </small>

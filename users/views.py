@@ -28,5 +28,5 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, "users/login.html", {
-        "message": "Logged out"
+        "message": "Usuario salió del sistema. Por favor introduzca su nombre de usuario y clave."
     })

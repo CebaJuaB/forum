@@ -2,12 +2,12 @@
 
 {% block body %}
     <div class="alert alert-primary" role="alert">
-        <h1 class="baz"> Bienvenido {{ request.user.username }} a las votaciones de Forum Digital </h1>
+        <h1 class="baz"> Bienvenido {{ request.user.username }} al reporte de votaciones por Forum Digital </h1>
     </div>
     <ul>
-        <li>Nombre:  {{ request.user.first_name }} </li>
-        <li>Apellido: {{ request.user.last_name }}</li>
-        <li>Dirección de correo electrónico: {{ request.user.email }} </li>
+        Nombre:  {{ request.user.first_name }}<br> 
+        Apellido: {{ request.user.last_name }}<br> 
+        Dirección de correo electrónico: {{ request.user.email }}<br> 
     </ul>
     <h1>Votaciones</h1>
     <ul>
@@ -22,4 +22,3 @@
         {% endfor %}
     </ul>
 {% endblock %}
-
