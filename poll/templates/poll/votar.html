@@ -1,0 +1,19 @@
+{% extends "poll/layout.html" %}
+
+{% block body %}
+    <h1> {{ request.user.username }}, 
+    ¿en cual votación quiere participar?</h1>
+    <div class="footer">
+        <ul>
+            {% for poll in polls %}
+                <p>
+                    <a href="{% url 'votar' poll.id %}"> 
+                        {{ poll.question }}
+                    </a>
+                </p>
+            {% empty %}
+                <li>No hay votaciones</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
