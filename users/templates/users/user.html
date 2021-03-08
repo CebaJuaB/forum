@@ -6,6 +6,10 @@
         <ul>
             <li>Nombre:  {{ request.user.first_name }} </li>
             <li>Apellido: {{ request.user.last_name }}</li>
+            <p></p>
+            <li>Coeficiente: {{ request.user.profile.coeficient }}</li>
+            <li>Acciones: {{ request.user.profile.shares }}</li>
+            <p></p>
             <li>
                 Dirección de correo electrónico: <a href="mailto:{{ request.user.email }}">{{ request.user.email }} </a>
             </li>

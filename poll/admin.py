@@ -9,4 +9,3 @@ class OptionAdmin(admin.ModelAdmin):
 admin.site.register(Option, OptionAdmin)
 admin.site.register(Poll)
 admin.site.register(Vote)
-

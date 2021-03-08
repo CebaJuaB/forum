@@ -12,6 +12,10 @@
         Método: {{ poll.method }}<br>
         Parámetro: {{ poll.parameter }}<br>
         Criterio: {{ poll.criteria }}<br>
+        <p></p>
+        <h2>Horario</h2>
+        Inicio de la votación: {{ poll.start_time }}<br>
+        Fin de la votación: {{ poll.end_time }}<br>
     </ul>
 
 
@@ -44,6 +48,12 @@
             <th>Usuario</th>
             <th>Nombre</th>
             <th>Apellido</th>
+            {% if poll.criteria == "Coeficiente" %}
+                <th>Coeficiente</th>
+            {% endif %}
+            {% if poll.criteria == "Acciones" %}
+                <th>Acciones</th>
+            {% endif %}
         </thead>
         <tbody>
             {% for vote in votes %}
@@ -53,6 +63,12 @@
                     <td>{{ vote.voter }}</td> 
                     <td>{{ vote.voter.first_name }} </td>
                     <td>{{ vote.voter.last_name }}</td> 
+                    {% if poll.criteria == "Coeficiente" %}
+                        <td>{{ vote.voter.profile.coeficient }}</td> 
+                    {% endif %}
+                    {% if poll.criteria == "Acciones" %}
+                        <td>{{ vote.voter.profile.shares }}</td> 
+                    {% endif %}
                 </tr>
                 {% empty %}
                 <li>No hay votos</li>
