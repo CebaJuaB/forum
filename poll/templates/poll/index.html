@@ -10,15 +10,13 @@
         Dirección de correo electrónico: {{ request.user.email }}<br> 
     </ul>
     <h1>Votaciones</h1>
-    <ul>
-        {% for poll in polls %}
-            <li>
-                <a href="{% url 'poll' poll.id %}"> 
-                    {{ poll.question }}
-                </a>
-            </li>
+    {% for poll in polls %}
+        <h2>
+            <a href="{% url 'poll' poll.id %}"> 
+                {{ poll.question }}
+            </a>
+        </h2>
         {% empty %}
             <li>No hay votaciones</li>
-        {% endfor %}
-    </ul>
+    {% endfor %}
 {% endblock %}

@@ -3,17 +3,15 @@
 {% block body %}
     <h1> {{ request.user.username }}, 
     ¿en cual votación quiere participar?</h1>
-    <div class="footer">
-        <ul>
-            {% for poll in polls %}
-                <p>
-                    <a href="{% url 'votar' poll.id %}"> 
-                        {{ poll.question }}
-                    </a>
-                </p>
+    <ul>
+        {% for poll in polls %}
+            <h2>
+                <a href="{% url 'votar' poll.id %}"> 
+                    {{ poll.question }}
+                </a>
+            </h2>
             {% empty %}
                 <li>No hay votaciones</li>
-            {% endfor %}
-        </ul>
-    </div>
+        {% endfor %}
+    </ul>
 {% endblock %}

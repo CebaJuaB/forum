@@ -11,47 +11,48 @@
          </style>
     </head>
     <body>
-            <table class="header">
-                <tr>
-                    <td width="20%" >
-                        <a href="{% url 'index' %}">Reporte de votaciones</a>
-                    </td>
-                    <td width="20%" >
-                        <a href="{% url 'votar' %}">Puesto de votaciones</a>
-                    </td>
-                    <td  width="20%">
-                        <a href="{% url 'users' %}"> Usuario </a>
-                    </td>
-                    <td  width="20%">
-                        <a href="{% url 'login' %}"> Login </a>
-                    </td>
-                    <td  width="20%">
+        <table class="header">
+            <tr>
+                <td width="20%" >
+                    <a href="{% url 'votar' %}">Puesto de votaciones</a>
+                </td>
+                <td width="20%" >
+                    <a href="{% url 'index' %}">Reporte de votaciones</a>
+                </td>
+                <td  width="20%">
+                    <a href="{% url 'users' %}"> Usuario </a>
+                </td>
+                <td  width="20%">
+                    <a href="{% url 'login' %}"> Login </a>
+                </td>
+                <td  width="20%">
                         <a href="{% url 'logout' %}"> Logout</a>
-                    </td>
-                </tr>
-            </table>
-            {% block body %}
+                </td>
+            </tr>
+        </table>
+        <p></p>
+        {% block body %}
 
-            {% endblock %}
-            <p></p>
-            <!-- Línea de navegación al pie-->
-			<div class="footer">
-				<small>
-					<a href="{% url 'index' %}">Reporte de votaciones</a> &emsp;
-                    <a href="{% url 'votar' %}">Puesto de votaciones</a> &emsp;
-                    <a href="{% url 'users' %}"> Usuario </a> &emsp;
-                    <a href="{% url 'login' %}"> Login</a> &emsp; 
-					<a href="{% url 'logout' %}"> Logout</a> &emsp;
-                </small>
-			</div>
-		    <!-- COPYRIGHT ROW -->
-			<div class="footer">
-				<small>
+        {% endblock %}
+        <p></p>
+        <!-- Línea de navegación de pie de página -->
+		<div class="footer">
+			<small>
+                <a href="{% url 'votar' %}">Puesto de votaciones</a> &emsp;
+				<a href="{% url 'index' %}">Reporte de votaciones</a> &emsp;
+                <a href="{% url 'users' %}"> Usuario </a> &emsp;
+                <a href="{% url 'login' %}"> Login</a> &emsp; 
+				<a href="{% url 'logout' %}"> Logout</a> &emsp;
+            </small>
+		</div>
+		<!-- COPYRIGHT ROW -->
+		<div class="footer">
+			<small>
                     Copyright @ 2021 Juan Ceballos
-                </small>
-			</div>
-            <div class="footer">
-				Forum Digital
-			</div>
+            </small>
+		</div>
+        <div class="footer">
+			Forum Digital
+		</div>
     </body>
 </html>
