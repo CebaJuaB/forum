@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
 
-from poll.models import Poll
+from poll.models import Poll, Option, Vote
 
 # Create your views here.
 def index(request):
@@ -17,6 +17,16 @@ def votar_view(request):
     if request.user.is_authenticated:
         return render(request, "poll/votar.html", {
             "polls": Poll.objects.all()
+        })
+    else:
+        return HttpResponseRedirect(reverse("login"))
+
+def vota_view(request, poll_id):
+    if request.user.is_authenticated:
+        return render(request, "poll/vota.html", {
+            "poll": Poll.objects.get(pk=poll_id),
+            "options": Option.objects.filter(poll=poll_id),
+            "votes": Vote.objects.filter(poll=poll_id).order_by('option')
         })
     else:
         return HttpResponseRedirect(reverse("login"))

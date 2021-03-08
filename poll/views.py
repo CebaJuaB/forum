@@ -22,11 +22,3 @@ def poll_view(request, poll_id):
         })
     else:
         return HttpResponseRedirect(reverse("login"))
-
-def votar_view(request):
-    if request.user.is_authenticated:
-        return render(request, "poll/votar.html", {
-            "polls": Poll.objects.all()
-        })
-    else:
-        return HttpResponseRedirect(reverse("login"))
