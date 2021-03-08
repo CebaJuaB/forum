@@ -21,7 +21,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "users/login.html", {
-                "message": "Las credenciales introducidas, no son válidas"
+                "message": "Las credenciales introducidas no son válidas"
             })
     return render(request, "users/login.html")
 

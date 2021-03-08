@@ -2,74 +2,38 @@
 
 {% block body %}
     <h1>
-        {{ request.user.username }} vote por {{ poll.question }}
+        {{ request.user.username }} vote por 
     </h1>
-    <h1 class="baz">
+    <h1  class="baz">
         {{ poll.question }}
     </h1>
-    <div class="container">
-        <div class="row justify-content-center">
-             <div class="form-group col-md-4 col-md-offset-5 align-center ">
-                <form action="{% url 'vota' / poll.id %}" method="post">
-                    {%  csrf_token %}
-                    <select name = "option">
-                        {% for option in options %}
-                            <option value="{{ option.id }}">{{ option }}</option>
-                        {% endfor %}
-                    </select>
-                    <input type="Envíe su voto">
-                </form>
-            </div>
-        </div> 
-    </div>
-    <ul>
-        Método: {{ poll.method }}<br>
-        Parámetro: {{ poll.parameter }}<br>
-        Criterio: {{ poll.criteria }}<br>
-    </ul>
-
-    <h2>Opciones</h2>
-    <ul>
+    <div class="footer">
+        <h2 class="baz">
+            Opciones:
+        </h2>
+        <ul>
         {% for option in options %}
             <h3>                
                 {{ option.answer }}
             </h3>
-            <ul>
-                {% if poll.criteria == "Coeficiente" %}
-                    Coeficiente alcanzado: {{ option.coeficient }}<br>
-                {% endif %}
-                {% if poll.criteria == "Individual" %}
-                    Votos alcanzados: {{ option.votes }}<br>
-                {% endif %}
-                {% if poll.criteria == "Acciones" %}
-                    Acciones votando por esta opción : {{ option.shares }}<br>
-                {% endif %}
-            </ul>
             {% empty %}
                 <p>No hay opciones</p>
         {% endfor %}
-    </ul>
-    <h2>Votos</h2>
-    <table>
-        <thead>
-            <th>Opción</th>
-            <th>Hora del voto</th>
-            <th>Usuario</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-        </thead>
-        <tbody>
-            {% for vote in votes %}
-                <tr>
-                    <td>{{ vote.option.answer }}</td>
-                    <td>{{ vote.vote_time }}</td>
-                    <td>{{ vote.voter }}</td> 
-                    <td>{{ vote.voter.first_name }} </td>
-                    <td>{{ vote.voter.last_name }}</td> 
-                </tr>
-                {% empty %}
-                <li>No hay votos</li>
-            {% endfor %}
-        </tbody>
-    </table>
+        </ul>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="form-group col-md-4 col-md-offset-5 align-center ">
+                    <form action="{% url 'votar' poll.id %}" method="post">
+                        {%  csrf_token %}
+                        <select name = "option">
+                        {% for option in options %}
+                            <option value="{{ option.id }}">{{ option }}</option>
+                        {% endfor %}
+                        <input type="submit" value="Acepte la opción">
+                        </select>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div> 
 {% endblock %}

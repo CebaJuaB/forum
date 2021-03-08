@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="alert alert-primary" role="alert">
-        <h1 class="baz"> Bienvenido {{ request.user.username }} al reporte de votaciones por Forum Digital </h1>
+        <h1 class="baz"> {{ request.user.username }}, este es el reporte de votaciones </h1>
     </div>
     <ul>
         Nombre:  {{ request.user.first_name }}<br> 
