@@ -1,12 +1,15 @@
 {% extends "poll/layout.html" %}
 
 {% block body %}
-    <h1> {{ request.user.username }}, 
-    ¿en cual votación quiere participar?</h1>
+    <div class="alert alert-warning" role="alert">
+        <h1 class="baz"> {{ request.user.username }}, este es el puesto de votación</h1>
+    </div>
+    <h1> 
+    ¿En cuál votación quiere participar?</h1>
     <ul>
         {% for poll in polls %}
             <h2>
-                <a href="{% url 'votar' poll.id %}"> 
+                <a href="{% url 'voto' poll.id %}"> 
                     {{ poll.question }}
                 </a>
             </h2>

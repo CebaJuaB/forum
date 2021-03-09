@@ -2,7 +2,9 @@
 
 {% block body %}
     <div>
-        <h1>Usuario: {{ request.user.first_name }}</h1>
+        <div class="alert alert-warning" role="alert">
+            <h1>Usuario: {{ request.user.first_name }}</h1>
+        </div>
         <ul>
             <li>Nombre:  {{ request.user.first_name }} </li>
             <li>Apellido: {{ request.user.last_name }}</li>

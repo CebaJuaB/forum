@@ -2,14 +2,8 @@
 
 {% block body %}
     <div class="alert alert-primary" role="alert">
-        <h1 class="baz"> {{ request.user.username }}, este es el reporte de votaciones </h1>
+        <h1 class="baz"> {{ request.user.username }}, aquí están los reportes de las votaciones </h1>
     </div>
-    <ul>
-        Nombre:  {{ request.user.first_name }}<br> 
-        Apellido: {{ request.user.last_name }}<br> 
-        Dirección de correo electrónico: {{ request.user.email }}<br> 
-    </ul>
-    <h1>Votaciones</h1>
     {% for poll in polls %}
         <h2>
             <a href="{% url 'poll' poll.id %}"> 
