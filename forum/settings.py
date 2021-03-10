@@ -25,14 +25,14 @@ SECRET_KEY = 'vo3&ukfo&=4!=l%9j#e8)2xb6uf@+)d!m^_&$lnd48=q6&0@^m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','localhost:8000/poll']
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
     'users',
     'poll',
+    'votar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 

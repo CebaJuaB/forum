@@ -3,7 +3,7 @@
 {% block body %}
     <div>
         <div class="alert alert-warning" role="alert">
-            <h1>Usuario: {{ request.user.first_name }}</h1>
+            <h1>Usuario: {{ request.user }}</h1>
         </div>
         <ul>
             <li>Nombre:  {{ request.user.first_name }} </li>
@@ -16,5 +16,23 @@
                 Dirección de correo electrónico: <a href="mailto:{{ request.user.email }}">{{ request.user.email }} </a>
             </li>
         </ul>
+        <table>
+            <thead>
+                <th>Votación</th>
+                <th>Selección</th>
+                <th>Hora del voto</th>
+            </thead>
+            <tbody>
+                {% for vote in votos %}
+                    <tr>
+                        <td>{{ vote.poll }}</td>
+                        <td>{{ vote.option }}</td>
+                        <td>{{ vote.vote_time }}</td> 
+                    </tr>
+                    {% empty %}
+                    <h2>No hay votos registrados</h2>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
