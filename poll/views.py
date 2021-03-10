@@ -16,12 +16,23 @@ def index(request):
 
 def poll_view(request, poll_id):
     if request.user.is_authenticated:
-        no_voters = User.objects.exclude().all()
+        no_voters = User.objects.all()
+        to_be_deleted = []
+        for vot in no_voters:
+            if Vote.objects.filter(poll=poll_id,voter=vot).exists():
+                to_be_deleted.append(vot.id)
         return render(request, "poll/poll.html", {
             "poll": Poll.objects.get(pk=poll_id),
             "options": Option.objects.filter(poll=poll_id),
-            "votes": Vote.objects.filter(poll=poll_id).order_by('option','voter'),
-            "no_voters": no_voters
+            "votes": Vote.objects.filter(poll=poll_id).order_by('option'),
+            "no_voters": no_voters.exclude(id__in=to_be_deleted)
         })
     else:
         return HttpResponseRedirect(reverse("login"))
+
+def no_voters():
+        to_be_deleted = []
+        for vot in no_voters:
+            if Vote.objects.filter(poll=poll_id,voter=vot).exists():
+                to_be_deleted.append(vot.id)
+        no_voters.exclude(id__in=to_be_deleted)

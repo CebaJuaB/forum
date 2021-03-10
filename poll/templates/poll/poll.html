@@ -75,4 +75,36 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <h2>Abstenciones</h2>
+    <table>
+        <thead>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            {% if poll.criteria == "Coeficiente" %}
+                <th>Coeficiente</th>
+            {% endif %}
+            {% if poll.criteria == "Acciones" %}
+                <th>Acciones</th>
+            {% endif %}
+        </thead>
+        <tbody>
+            {% for vote in no_voters %}
+                <tr>
+                    <td>{{ vote }}</td> 
+                    <td>{{ vote.first_name }} </td>
+                    <td>{{ vote.last_name }}</td> 
+                    {% if poll.criteria == "Coeficiente" %}
+                        <td>{{ vote.profile.coeficient }}</td> 
+                    {% endif %}
+                    {% if poll.criteria == "Acciones" %}
+                        <td>{{ vote.profile.shares }}</td> 
+                    {% endif %}
+                </tr>
+                {% empty %}
+                <h2>No hay abstenciones</h2>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
