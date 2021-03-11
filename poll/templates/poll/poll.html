@@ -7,8 +7,72 @@
     <h1 class="baz">
         {{ poll.question }}
     </h1>
-    
+    {% if poll.criteria == "Coeficiente" %}
+        <div class ="container">
+            <div>
+                <canvas id="pieChart"></canvas>
+                <script>
+                    var ctx = document.getElementById('pieChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                        data: {
+                            labels: {{labels|safe}},
+                            datasets: [{
+                                data: {{data_coeficient|safe}},
+                                backgroundColor: {{colors|safe}}
+                            }]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'Gráfico de torta para la pregunta: {{ poll.question }} usando {{ poll.criteria }} como criterio decisorio'
+                            },
+                            legend: {
+                                disblay: true,
+                                position: 'right',
+                                labels: {
+                                    fontColor: '#000'
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <div>
+                <canvas id="BarChart"></canvas>
+                <script>
+                    var ctx = document.getElementById('BarChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                        data: {
+                            labels: {{labels|safe}},
+                            datasets: [{
+                                label: 'Coeficient',
+                                data: {{data_coeficient|safe}},
+                                backgroundColor: 'darkblue'
+                            }]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'Gráfico de barras para la pregunta: {{ poll.question }} usando {{ poll.criteria }} como criterio decisorio'
+                            },
+                            legend: {
+                                disblay: true,
+                                position: 'right',
+                                labels: {
+                                    fontColor: '#000'
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    {% endif %}
     <ul>
+        <h2>Características de la votación</h2>
         Método: {{ poll.method }}<br>
         Parámetro: {{ poll.parameter }}<br>
         Criterio: {{ poll.criteria }}<br>

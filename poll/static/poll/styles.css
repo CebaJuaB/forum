@@ -87,8 +87,8 @@ ul  li {
 #container > div {
     background-color: lightgreen;
     font-size: 20px;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     width: 200px;
 }
 
@@ -98,7 +98,7 @@ ul  li {
     padding: 20px;
     grid-column-gap: 20px;
     grid-row-gap: 10px;
-    grid-template-columns: auto 200px 200px 200px 200px;
+    grid-template-columns: 200 auto;
 }
 
 .grid-item {

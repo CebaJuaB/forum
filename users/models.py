@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     shares = models.IntegerField(default=0)
-    coeficient = models.DecimalField(max_digits=2, decimal_places=2,default=0)
+    coeficient = models.DecimalField(max_digits=4, decimal_places=4, default=0)
     document = models.IntegerField(default=0)
 
     def __str__(self):

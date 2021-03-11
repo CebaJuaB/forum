@@ -3,10 +3,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
 from django.contrib.auth.models import User
-
 from poll.models import Poll, Option, Vote
-
 from datetime import datetime
+from django.db import transaction
+
 import pytz
 
 set(pytz.all_timezones_set)
@@ -48,19 +48,18 @@ def voto_view(request, poll_id):
 
 def votacion_view(request, poll_id):
     if request.method == "POST":
-        option = Option.objects.get(pk=int(request.POST["option"]))
-        poll = Poll.objects.get(pk=poll_id)
-        voter = request.user
-
         tz = pytz.timezone('America/Bogota')
         vote_time = datetime.now(tz=tz)
-
-        option.coeficient = voter.profile.coeficient + option.coeficient
-        option.shares = voter.profile.shares + option.shares
-        option.votes = option.votes + 1
-        option.save()
-
+        poll = Poll.objects.get(pk=poll_id)
+        voter = request.user
+        
+        with transaction.atomic():
+            option = Option.objects.select_for_update().filter(pk=int(request.POST["option"])).first()
+            option.coeficient += voter.profile.coeficient 
+            option.shares += voter.profile.shares 
+            option.votes += 1
+            option.save()
         voto = Vote(poll=poll, option=option, voter=voter, vote_time=vote_time)
         voto.save()
-        
+
         return HttpResponseRedirect(reverse("poll", args=(poll.id,)))
