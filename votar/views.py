@@ -52,7 +52,6 @@ def votacion_view(request, poll_id):
         vote_time = datetime.now(tz=tz)
         poll = Poll.objects.get(pk=poll_id)
         voter = request.user
-        
         with transaction.atomic():
             option = Option.objects.select_for_update().filter(pk=int(request.POST["option"])).first()
             option.coeficient += voter.profile.coeficient 
@@ -61,5 +60,4 @@ def votacion_view(request, poll_id):
             option.save()
         voto = Vote(poll=poll, option=option, voter=voter, vote_time=vote_time)
         voto.save()
-
         return HttpResponseRedirect(reverse("poll", args=(poll.id,)))
