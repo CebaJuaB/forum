@@ -34,8 +34,8 @@ def poll_view(request, poll_id):
         return render(request, "poll/poll.html", {
             "poll": Poll.objects.get(pk=poll_id),
             "options": options,
-            "votes": Vote.objects.filter(poll=poll_id).order_by('option','voter'),
-            "no_voters": no_voters.exclude(id__in=voted),
+            "votes": Vote.objects.filter(poll=poll_id).order_by('option'),
+            "no_voters": no_voters.exclude(id__in=voted).order_by('first_name'),
             'labels': labels[:8],
             'data_coeficient': data_coeficient[:8],
             'data_shares': data_shares[:8],
