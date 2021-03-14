@@ -52,6 +52,12 @@ def votacion_view(request, poll_id):
         vote_time = datetime.now(tz=tz)
         poll = Poll.objects.get(pk=poll_id)
         voter = request.user
+        queryset = Vote.objects.filter(poll=poll, voter=voter)
+        if queryset.exists():
+            return render(request, "poll/votar.html", {
+                "message": "Ya participó en la votación seleccionada.",
+                "polls": Poll.objects.all()
+                })
         with transaction.atomic():
             option = Option.objects.select_for_update().filter(pk=int(request.POST["option"])).first()
             option.coeficient += voter.profile.coeficient 
